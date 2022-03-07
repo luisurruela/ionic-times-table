@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ionic-times-table",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

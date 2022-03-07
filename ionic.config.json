@@ -1,0 +1,7 @@
+{
+  "name": "ionic-times-table",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
