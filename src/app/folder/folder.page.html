@@ -15,7 +15,15 @@
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong class="capitalize">Tablas de Multiplicar</strong>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="6" *ngFor="let num of numbers">
+          <ion-button (click)="times(num)" expand="block" shape="round">
+            {{ num }}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
