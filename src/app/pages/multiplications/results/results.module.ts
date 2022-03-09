@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { ResultsPageRoutingModule } from './results-routing.module';
 
 import { ResultsPage } from './results.page';
+import { NumberToTextPipe } from 'src/app/pipes/number-to-text.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ResultsPageRoutingModule
+    ResultsPageRoutingModule,
   ],
-  declarations: [ResultsPage]
+  providers: [NumberToTextPipe],
+  declarations: [ResultsPage, NumberToTextPipe]
 })
 export class ResultsPageModule {}

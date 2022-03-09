@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tabla del {{ result.num | numberToText }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding ion-text-center">
+  <ion-text color="dark" *ngFor="let number of numbers" class="result" (click)="showTip(number)">
+    <h1 class="result">{{ number }} x {{ result.num }}</h1>
+  </ion-text>
+  <ion-button (click)="startExam()" expand="block" shape="round" class="ion-margin-top">
+    Empezar examen
+  </ion-button>
+</ion-content>
