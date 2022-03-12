@@ -17,7 +17,7 @@ export class ResultsPage implements OnInit {
     private alertController: AlertController,
     private numberToText: NumberToTextPipe
   ) {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.result = JSON.parse(params.result);
     });
   }
@@ -28,16 +28,35 @@ export class ResultsPage implements OnInit {
     // start exam
   }
 
-  async showTip(number: number) {
+  async getAddition(num: number) {
+    let text = '';
+    while (num > 0) {
+      text =
+        num - 1 > 0
+          ? text + '' + this.result.num + ' + '
+          : text + '' + this.result.num + '';
+      num--;
+    }
+    return text;
+  }
+
+  async showTip(num: number) {
+    const text = await this.getAddition(num);
+    const subheader =
+      num > 1
+        ? 'Suma ' +
+          this.numberToText.transform(num) +
+          ' veces el número ' +
+          this.result.num
+        : 'Todo número multiplicado por 1 es igual al mismo número.';
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: number + ' x ' + this.result.num + ' = ' + number *  this.result.num,
-      subHeader: 'Suma ' + this.numberToText.transform(number) + ' veces el número ' + this.result.num,
-      message: 'Suma ' + this.numberToText.transform(number) + ' veces el número ' + this.result.num,
-      buttons: ['OK']
+      header: num + ' x ' + this.result.num + ' = ' + num * this.result.num,
+      subHeader: subheader,
+      message: '' + text + ' = ' + num * this.result.num,
+      buttons: ['OK'],
     });
 
     await alert.present();
   }
-
 }
