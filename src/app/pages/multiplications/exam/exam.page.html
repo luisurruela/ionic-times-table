@@ -15,4 +15,14 @@
       </ion-text>
     </ion-card-content>
   </ion-card>
+  <ion-card class="ion-padding">
+    <ion-text color="tertiary">
+      <p>Escribe el resultado</p>
+    </ion-text>
+    <ion-input type="text" class="ion-text-center ion-margin-bottom" [(ngModel)]="resultInput" autofocus></ion-input>
+    <ion-button (click)="checkResult()" expand="block" shape="round">
+      Siguiente
+    </ion-button>
+  </ion-card>
+  <p>Buenas: {{ history.hits }} | Malas: {{ history.mistakes }}</p>
 </ion-content>
