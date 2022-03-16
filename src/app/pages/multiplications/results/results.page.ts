@@ -1,6 +1,6 @@
 import { NumberToTextPipe } from './../../../pipes/number-to-text.pipe';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -15,7 +15,8 @@ export class ResultsPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private alertController: AlertController,
-    private numberToText: NumberToTextPipe
+    private numberToText: NumberToTextPipe,
+    private router: Router
   ) {
     this.route.queryParams.subscribe((params) => {
       this.result = JSON.parse(params.result);
@@ -25,7 +26,7 @@ export class ResultsPage implements OnInit {
   ngOnInit() {}
 
   startExam() {
-    // start exam
+    this.router.navigate(['multiplications/exam'], {queryParams: {multiplier: JSON.stringify(this.result.num)}});
   }
 
   async getAddition(num: number) {
@@ -59,4 +60,5 @@ export class ResultsPage implements OnInit {
 
     await alert.present();
   }
+
 }
